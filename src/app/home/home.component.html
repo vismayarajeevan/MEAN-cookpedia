@@ -1,0 +1,95 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row p-5 bg-success">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-4 text-light">
+            <h1>The Easies way <br> To make your <br> Favorite Meal</h1>
+            <p style="text-align: justify;" class="my-4">Discover 100+ recipes in your hand with the best recipe. Help you to find the easiest way to cook</p>
+            <a routerLink="/all-recipe" style="background-color: green;" class="btn text-light">Explore Recipes</a>
+        </div>
+             
+        <div class="col-lg-6">
+            <img class="w-50 landingImg" style="margin-left: 150px;"  src="https://img.freepik.com/free-psd/delicious-spicy-stew-with-fried-egg_191095-79654.jpg?t=st=1740123505~exp=1740127105~hmac=80f482ac934cb0c26694b02e40156616b152d5f6b34a7441dbed49bf81e23159&w=740" alt="">
+        </div>
+    </div>
+
+
+
+<!-- popular recipes -->
+ <div class="my-5 p-5">
+    <h1>Popular Recipes of the week</h1>
+    <div class="d-flex justify-content-between">
+        <p>Our Most Popular Recipes of the week</p>
+        <a routerLink="/all-recipe">View All</a>
+    </div>
+
+    <div class="row my-3">
+        
+@for (recipe of allRecipes; track $index) {
+    <!-- each recipes -->
+    <div class="col-lg-4">
+        <div class="p-3">
+            <!-- propert binding in src -->
+            <img class="card-img-top" [src]="recipe.image" alt="">
+    
+            <div class="card-body">
+                <!-- interpolation -->
+                <h5 class="card-title">{{recipe.name}}</h5>
+    
+            </div>
+    
+        </div>
+        
+    </div>
+}
+    </div>
+
+ </div>
+
+ <!-- banner -->
+  <div style="height: 400px; background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20241007/pngtree-restaurant-menu-with-fast-food-images-through-online-banners-social-image_16290915.jpg'); background-size: cover;" class="row align-items-center my-5">
+    <div class="col-lg-6">
+
+    </div>
+    <div class="col-lg-6">
+       <div class="bg-light rounded p-5 w-75">
+        <h3>50+ Recipes That Very Quick And Fast</h3>
+        <p></p>
+
+       </div>
+    </div>
+
+  </div>
+
+  <!-- download app -->
+   <div style="height: 450px;" class="my-5 row align-items-center text-light bg-success rounded p-5">
+    <div class="col-lg-6">
+        <img src="https://www.mountainmikespizza.com/wp-content/uploads/2022/05/MMP313429_App_Slider_768x800_B.jpg" height="350px" alt="">
+    </div>
+
+    <div class="col-lg-6 text-center">
+        <h1>download App</h1>
+        <h5 class="my-5">Download the App From App store or Google Play for a better experience</h5>
+        <img width="150px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSADMTEo4YEurEn-gXFBOfumKYAJMviq-T9ww&s" alt="">
+        <img width="150px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT5wbyQA1MXQWe_E1TtPb5zBklQjH_N_xVnQ&s" alt="">
+    </div>
+   </div>
+
+
+   <!-- testimonials -->
+    <div class="text-center my-5">
+      <h1>Client Testimonials</h1>
+      <marquee>
+        <div class="d-flex my-5">
+            <!-- testimony -->
+            <div class="rounded border w-100 p-3 me-2">
+                <h5>Name</h5>
+                <p style="White-space:normal ; width: 100% ; text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti deserunt, reiciendis, quidem magnam laborum, quam at autem ipsum cupiditate modi itaque sit soluta iusto iure nam. Dolore dolorum nostrum fuga.</p>
+
+            </div>
+        </div>
+      </marquee>
+    </div>
+</div>
+<app-footer></app-footer>
+
