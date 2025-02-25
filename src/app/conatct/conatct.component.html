@@ -1,1 +1,51 @@
-<p>conatct works!</p>
+<app-header></app-header>
+<div class="container">
+        <div class="row align-items-center" >
+            <div class="bg-success d-flex justify-content-center align-items-center" style="height: 350px;">
+              <h1>Contact Us</h1>
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis, suscipit veniam vero dolorem, aspernatur sapiente vitae sequi magni nesciunt iste rerum quaerat sed at velit blanditiis nobis. In, quod error?</p>
+            </div>
+          
+        </div>
+
+        <div class="row align-items-center my-5">
+            <div class="col-lg-6 align-items-center">
+                <h1>About Us</h1>
+                <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate aperiam reprehenderit illum. Sit nostrum sunt placeat dolor ea atque saepe est eos omnis.</p>
+                <ul>
+                    <li>Lorem ipsum dolor sit amet</li>
+                    <li>consectetur adipisicing elit</li>
+                    <li>Quo mollitia quas eaque qui</li>
+                    <li>suscipit accusantium saepe</li>
+                </ul>
+                <button routerLink="/" class="btn btn-success mt-4">Know More About Us</button>
+            </div>
+
+            <div class="col-lg-1"></div>
+            <div class="col-lg-4">
+                <form [formGroup]="testimonyForm" (ngSubmit)="addTestimony()" class="border rounded shadow p-5" action="">
+                    <h3>Client Testimony</h3>
+                    <div class="mb-3 mt-5">
+                        <input type="text" formControlName="name" name="name" class="form-control" placeholder="name">
+
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" formControlName="email" name="email" class="form-control" placeholder="name">
+
+                    </div>
+                    <div class="mb-3 ">
+                        <textarea name="message" formControlName="message" class="form-control" placeholder="Message" id=""></textarea>
+
+                    </div>
+                    <p class="text-secondary my-5">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Animi rem debitis dicta ea voluptatem temporibus suscipit placeat sint</p>
+
+                    <div class="float end">
+                        <button type="submit" class="btn btn-success">submit</button>
+                    </div>
+
+                </form>
+            </div>
+        
+           </div>
+</div>
+<app-footer></app-footer>

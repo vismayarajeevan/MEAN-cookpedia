@@ -10,7 +10,13 @@ export class ApiService {
 
   constructor(private http:HttpClient) {}
 
+  // api call for get all recipes
   getAllRecipeAPI(){
     return this.http.get(`${this.server_url}/all-recipes`)
   }
+
+  // api call for add testimony
+addTestimonyAPI(reqBody:any){
+   return this.http.post(`${this.server_url}/add-testimony`,reqBody)
+}
 }
