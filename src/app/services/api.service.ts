@@ -19,4 +19,16 @@ export class ApiService {
 addTestimonyAPI(reqBody:any){
    return this.http.post(`${this.server_url}/add-testimony`,reqBody)
 }
+
+  // api call for register
+  registerAPI(reqBody:any){
+    return this.http.post(`${this.server_url}/register`,reqBody)
+ }
+
+  // api call for register
+  loginAPI(reqBody:any){
+    return this.http.post(`${this.server_url}/login`,reqBody)
+ }
+
+
 }

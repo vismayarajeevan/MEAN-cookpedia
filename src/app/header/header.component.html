@@ -25,11 +25,21 @@
 
         <div class="ms-auto dropdown">
             <button class="btn dropdown-toggle text-light" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="fa-solid fa-user"></i>
+              <i class="fa-solid fa-user me-2"></i>
+              @if (isLoggedin) {
+                <span class="fw-bolder">Hi, {{loginUser}}</span>
+              }
             </button>
             <ul class="dropdown-menu">
+             @if (isLoggedin) {
+              <li><a class="dropdown-item" routerLink="/profile">Profile</a></li>
+              <li><a class="dropdown-item" routerLink="/save-recipe">Recipe Collection</a></li>
+              <li><button (click)="logout()" class="dropdown-item" routerLink="/register">Logout<i class="fa-solid fa-right-from-bracket ms-2"></i></button></li>
+
+             }@else{
               <li><a class="dropdown-item" routerLink="/login">Login</a></li>
-              <li><a class="dropdown-item" routerLink="/register">Register</a></li>
+              <li><a class="dropdown-item" >Register</a></li>
+             }
             </ul>
           </div>
         
