@@ -15,6 +15,7 @@ export class HomeComponent {
   // property to store all recipes
   allRecipes:any =[]
 
+  allApprovedTestimony:any =[]
   
 
   // 
@@ -23,6 +24,7 @@ export class HomeComponent {
   // need to call this at page loads
   ngOnInit(){
     this.getAllRecipes()
+    this.getAllApprovedTestimony()
   }
 
   // make api call
@@ -33,6 +35,15 @@ export class HomeComponent {
 
       
       
+      
+    })
+  }
+
+  // get all aprroved testimony
+  getAllApprovedTestimony(){
+    this.api.getAllApprovedTestimonialApi().subscribe((res:any)=>{
+      this.allApprovedTestimony =res
+      console.log(this.allApprovedTestimony);
       
     })
   }

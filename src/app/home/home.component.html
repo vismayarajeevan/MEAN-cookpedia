@@ -81,12 +81,14 @@
       <h1>Client Testimonials</h1>
       <marquee>
         <div class="d-flex my-5">
-            <!-- testimony -->
-            <div class="rounded border w-100 p-3 me-2">
-                <h5>Name</h5>
-                <p style="White-space:normal ; width: 100% ; text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti deserunt, reiciendis, quidem magnam laborum, quam at autem ipsum cupiditate modi itaque sit soluta iusto iure nam. Dolore dolorum nostrum fuga.</p>
+           @for (item of allApprovedTestimony; track $index) {
+             <!-- testimony -->
+             <div class="rounded border w-100 p-3 me-2">
+                <h5>{{item.name}}</h5>
+                <p style="White-space:normal ; width: 100% ; text-align: justify;">{{item.message}}</p>
 
             </div>
+           }
         </div>
       </marquee>
     </div>

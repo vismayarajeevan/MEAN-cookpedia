@@ -1,1 +1,106 @@
-<p>view-recipes works!</p>
+<app-header></app-header>
+
+<div class="container my-5">
+    <div class="row mb-5">
+        <div class="col-lg-6">
+            <a routerLink="/all-recipe">Back to Recipe List...</a>
+            <br>
+            <img class="img-fluid my-5" [src]="recipe.image" alt="">
+            <div class="d-flex justify-content-between">
+                <button (click)="downloadRecipe()" class="btn btn-success">Download A Recipe</button>
+                <button (click)="saveRecipe()" class="btn btn-primary">Save Recipe</button>
+
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <h1>{{recipe.name}}</h1>
+            <div class="d-flex justify-content-between my-5">
+               <p class="fw-bolder">Cuisine: {{recipe.cuisine}}</p>
+               <p class="fw-bolder">Servings: {{recipe.Servings}}</p>
+               <p class="fw-bolder">Mode of cooking: {{recipe.difficulty}}</p>
+
+            </div>
+
+            <div class="d-flex justify-content-evenly">
+                <div class="d-flex flex-column align-items-center">
+                    <img src="https://thumbs.dreamstime.com/b/blue-alarm-clock-icon-clipart-animated-cartoon-vector-illustration-cartoon-alarm-clock-flat-vector-illustration-graphic-design-321152198.jpg" width="70px" alt="">
+                    <p class="fw-bolder">Preperation time</p>
+                    <h6><span class="text-danger fw-bolder">{{recipe.prepTimeMinutes}}</span>Minutes</h6>
+                </div>
+    
+                <div class="d-flex flex-column align-items-center">
+                    <img src="https://cdn-icons-png.freepik.com/256/14264/14264192.png?semt=ais_hybrid" class="img-fluid" width="70px" alt="">
+                    <p class="fw-bolder">Cooking time</p>
+                    <h6><span class="text-danger fw-bolder">{{recipe.cookTimeMinutes}}</span>Minutes</h6>
+                </div>
+
+                <div class="d-flex flex-column align-items-center">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm45XAKFl2v5MdnciZYsn3d2eCvaz_T9i74A&s" width="70px" alt="">
+                    <p class="fw-bolder">Calorie per Serving</p>
+                    <h6><span class="text-danger fw-bolder">{{recipe.caloriesPerServing}}</span>Calories</h6>
+                </div>
+            </div>
+
+
+            <div class="my-4">
+                <h2>Ingredients Needed</h2>
+                <ol>
+                    @for (item of recipe.ingredients; track $index) {
+                        <li>{{item}}</li>
+                    }
+                </ol>
+            </div>
+
+            <div class="my-4">
+                <h2>Cooking Instructions</h2>
+                <ol>
+                    @for (item of recipe.instructions; track $index) {
+                        <li>{{item}}</li>
+                    }
+                </ol>
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+
+    <div class="mb-5">
+        <h1>Related Recipes</h1>
+        <div class="row my-3">
+           
+              @if (allRelatedRecipes.length>0) {
+                @for (item of allRelatedRecipes; track $index) {
+                    <div class="col-lg-2">
+                        <div routerLink="/recipes/{{item._id}}/view" class="p-3">
+                            <!-- propert binding in src -->
+                            <img class="card-img-top" [src]="item.image" alt="">
+                    
+                            <div class="card-body">
+                                <!-- interpolation -->
+                                <h6 class=" mt-2 card-title">{{item.name}}</h6>
+                    
+                            </div>
+                    
+                        </div>
+                        
+                    </div>
+
+                }
+
+              }@else{
+                <div>
+                    <h3 class="text-danger">No related recipes found!!!</h3>
+                </div>
+              }
+                    
+               
+        
+        </div>
+    </div>
+
+</div>
+<app-footer></app-footer>

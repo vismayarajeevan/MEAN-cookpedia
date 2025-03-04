@@ -11,8 +11,24 @@ import { SavedRecipesComponent } from './saved-recipes/saved-recipes.component';
 import { ViewRecipesComponent } from './view-recipes/view-recipes.component';
 import { RegisterComponent } from './register/register.component';
 import { PnfComponent } from './pnf/pnf.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { DownloadListComponent } from './admin/download-list/download-list.component';
+import { RecipeListComponent } from './admin/recipe-list/recipe-list.component';
 
 export const routes: Routes = [
+    // lazy loaded admin module
+    {
+        path:"admin",loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule)
+
+    },
+   
+   
+
+
+
+
+
+
     {
         // http://localhost:4200/home
         path:"",component:HomeComponent, title:'Home'

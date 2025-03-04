@@ -38,6 +38,7 @@ export class LoginComponent {
             this.router.navigateByUrl('/')
           }else{
             // admin panel
+            this.router.navigateByUrl('/admin')
           }
 
           
