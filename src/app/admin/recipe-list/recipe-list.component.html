@@ -5,7 +5,48 @@
     </div>
 
     <div class="col-lg-10">
-        <p>recipe-list</p>
+        <h1 class="text-center text-warning my-4">All Recipe List</h1>
+        <div class="d-flex justify-content-between">
+            <button routerLink="/admin/recipe/add" class="btn btn-primary">+ Add New Recipe</button>
+            <input [(ngModel)]="searchRecipe" type="text" placeholder="Search recipe by Name!!!" class="form-control w-25">
+
+        </div>
+
+        <table class="table my-5 shadow">
+          <thead>
+            <tr>
+                <td>#</td>
+                <td>Name</td>
+                <td>Image</td>
+                <td>Cuisine</td>
+                <td>...</td>
+            </tr>
+          </thead>
+          <tbody>
+            @for (recipes of allRecipes | search :searchRecipe ; track $index ; let i=$index) {
+               <tr>
+                <td>{{i+1}}</td>
+                <td>{{recipes.name}}</td>
+                <td><img [src]="recipes.image" width="70px" height="70px" alt=""></td>
+                <td>{{recipes.cuisine}}</td>
+                <td>
+                    <button routerLink="/admin/recipe/{{recipes._id}}/edit" class="btn me-1"><i class="fa-solid fa-edit text-primary"></i></button>
+                    <button  class="btn me-1"><i class="fa-solid fa-trash text-danger"></i></button>
+
+                </td>
+                
+
+
+                </tr>
+            }
+            @if ((allRecipes | search:searchRecipe).length ==0) {
+                <tr>
+                    <td class="text-center" colspan="5">No Recipe Found</td>
+                </tr>
+            }
+          </tbody>
+        </table>
+
     </div>
 
 </div>

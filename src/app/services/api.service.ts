@@ -107,5 +107,10 @@ getAllApprovedTestimonialApi(){
   return this.http.get(`${this.server_url}/all-approvedtestimonials`)
 }
 
+ // api call for add recipe
+ addRecipeAPI(reqBody:any){
+  return this.http.post(`${this.server_url}/add-recipes`,reqBody,this.appendToken())
+}
+
 
 }
