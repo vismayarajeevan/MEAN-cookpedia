@@ -112,5 +112,53 @@ getAllApprovedTestimonialApi(){
   return this.http.post(`${this.server_url}/add-recipes`,reqBody,this.appendToken())
 }
 
+ // api call for add recipe
+ editRecipeAPI(id:string,reqBody:any){
+  return this.http.put(`${this.server_url}/recipes/${id}/edit`,reqBody,this.appendToken())
+}
 
+ // api call for add recipe
+ deleteRecipeAPI(id:string){
+  return this.http.delete(`${this.server_url}/recipes/${id}/delete`,this.appendToken())
+}
+
+// get chart data
+getChartdata(){
+  this.allDownloadListApi().subscribe((res:any)=>{
+    console.log(res);
+    
+      // code extracting cuisne and its total download count as object and added to Aan array
+      // input: [...{recipecuisine,count}....]
+      // output: [{name:cuisine,y:toalcount}]
+      let downloadArrayList:any =[]
+      let output:any ={}
+
+      res.forEach((item:any)=>{
+       let cuisine = item.recipeCuisine
+       let currentCount = item.count
+       if(output.hasOwnProperty(cuisine)){
+         output[cuisine] +=currentCount
+       }else{
+         output[cuisine] = currentCount
+
+       }
+      })
+
+      console.log(output);
+
+      for(let cuisine in output){
+       downloadArrayList.push({name:cuisine,y:output[cuisine]})
+      }
+      console.log(downloadArrayList);
+
+     // algorithm
+     // 1.create an empty array for output, and object for storing each array item
+     // 2.get each array item of response and store its recipe cuisine & count to a variable
+     // 3. Check recipecuisine variable in output object
+     //      if present then set the value of recipecuisine key as total existing recipe cuisine value with new count .
+     //      not present then insert recipecuisine as key and value S ITS COUNT
+     // 4. Push each key and vale
+    
+  })
+}
 }

@@ -5,8 +5,17 @@
     </div>
 
     <div class="col-lg-10">
-        <h1 class="text-center my-3">Add Recipe Details</h1>
+        @if (id) {
+            <h1 class="text-center my-3">Update Recipe Details</h1>
+
+        }@else{
+            <h1 class="text-center my-3">Add Recipe Details</h1>
+
+        }
         <div class="container my-5 rounded text-center p-5 shadow w-75">
+            @if (recipeDetails.image) {
+                <img class="mb-3" width="100px" height="100px" [src]="recipeDetails.image" alt="no image">
+            }
             <div class="row">
               <div class="col-6">
                 <div class="mb-2">
@@ -89,11 +98,22 @@
             <div class="mb-3">
                 <div class="border rounded p-2">
                    <p class="mb-2">Choose meal Type of recipe :</p>
+                  @if (id) {
+                    @for (item of mealArray; track $index) {
+                        <span class="me-1 border rounded p-1 me-2">{{item}}
+                            <button (click)="removeMealType(item)" class="btn"><i class="fa-solid fa-close"></i></button>
+                        </span>
+                       }
+                  }@else {
+                    @for (item of mealArray; track $index) {
+                        <span class="me-1 border rounded p-1 me-2">{{item}}</span>
+                       }
+                  }
                    <div class="d-flex flex-wrap my-3">
                     @for (meal of mealTypeArray; track $index) {
                         <div class="border rounded p-1 me-2">
                             <label [for]="meal">
-                                <input type="checkbox" [name]="meal" [id]="meal">
+                                <input (change)="mealTypeSelect($event)" type="checkbox" [name]="meal" [id]="meal">
                                 {{meal}}
                             </label>
                         </div>
@@ -102,8 +122,13 @@
                 </div>
 
             </div>
-            <button (click)="addRecipe()" class="btn btn-success">Add Recipe</button>
+@if (id) {
+    <button (click)="editRecipe()" class="btn btn-success">edit Recipe</button>
 
+}@else {
+    <button (click)="addRecipe()" class="btn btn-success">Add Recipe</button>
+
+}
         </div>
     </div>
 
