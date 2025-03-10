@@ -150,6 +150,7 @@ getChartdata(){
        downloadArrayList.push({name:cuisine,y:output[cuisine]})
       }
       console.log(downloadArrayList);
+      localStorage.setItem("chart",JSON.stringify(downloadArrayList))
 
      // algorithm
      // 1.create an empty array for output, and object for storing each array item

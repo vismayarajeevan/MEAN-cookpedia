@@ -33,6 +33,8 @@ export class LoginComponent {
           // store token to session storage
           sessionStorage.setItem('user',JSON.stringify(res.user))
           sessionStorage.setItem('token',res.token)
+          // call get chart data
+          this.api.getChartdata()
           this.loginForm.reset()
           if(res.user.role=="User"){
             this.router.navigateByUrl('/')

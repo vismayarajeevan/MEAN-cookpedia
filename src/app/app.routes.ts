@@ -14,11 +14,12 @@ import { PnfComponent } from './pnf/pnf.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { DownloadListComponent } from './admin/download-list/download-list.component';
 import { RecipeListComponent } from './admin/recipe-list/recipe-list.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     // lazy loaded admin module
     {
-        path:"admin",loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule)
+        path:"admin", canActivate:[authGuard],  loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule)
 
     },
    
@@ -55,7 +56,7 @@ export const routes: Routes = [
     },
     {
         // http://localhost:4200/profile
-        path:"profile",component:ProfileComponent, title:'Profile'
+        path:"profile",canActivate:[authGuard], component:ProfileComponent, title:'Profile'
     },
     {
         // http://localhost:4200/all-recipes

@@ -26,6 +26,8 @@ export class DashboardComponent {
   requestCount:number=0
 
   constructor(private router:Router, private api:ApiService){
+   if(localStorage.getItem('chart')){
+    let chartData = JSON.parse(localStorage.getItem('chart') || '')
     this.chartOptions ={
       chart:{
         type:'bar'
@@ -52,14 +54,11 @@ export class DashboardComponent {
         name:"Cuisine",
         coloByPoint:true,
         type:'bar',
-        data:[
-          {name:"Asian",y:2},
-          {name:"Thai",y:1},
-          {name:"Italian",y:4}
-        ]
+        data:chartData
       }]
 
     }
+   }
   }
 
   ngOnInit(){
